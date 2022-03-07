@@ -10,7 +10,7 @@ ___
 
 **Technos :** Spring, PostgresSQL
 
-**Authors :** Anatole de Chauveron, Tristan Six
+**Authors :** [Anatole de Chauveron](https://github.com/Anatole-DC), [Tristan Six](https://github.com/Tarskan)
 
 **Licence :** All rights reserved
 
@@ -18,17 +18,17 @@ ___
 
 ## Services
 
-### [🏆 Challenges](challenges/README.md)
+### [🏆 Challenges](challenges)
 
-### [📙 Receipes](receipes/README.md)
+### [📙 Receipes](receipes)
 
-### [🥕 Ingredients](ingredients/README.md)
+### [🥕 Ingredients](ingredients)
 
-### [👥 Users](users/README.md)
+### [👥 Users](users)
 
-### [👮 Admin](admin/README.md)
+### [👮 Admin](admin)
 
-### [📚 Files](files/README.md)
+### [📚 Files](files)
 
 ## Getting Started
 
