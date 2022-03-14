@@ -20,7 +20,7 @@ public class IngredientsService {
         return ingredientsRepository.getById(id_user);
     }
 
-    public List<Ingredient> getingredientByName(String name_Ingredient) {
+    public List<Ingredient> getIngredientByName(String name_Ingredient) {
         return ingredientsRepository.findByNameContaining(name_Ingredient);
     }
 

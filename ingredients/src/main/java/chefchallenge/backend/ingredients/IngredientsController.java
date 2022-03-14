@@ -25,7 +25,7 @@ public class IngredientsController {
 
     @GetMapping("/search/{name_ingredient}")
     public List<Ingredient> getIngredientByName(@PathVariable String name_ingredient){
-        return ingredientsService.getingredientByName(name_ingredient);
+        return ingredientsService.getIngredientByName(name_ingredient);
     }
 
     @PutMapping
@@ -38,7 +38,7 @@ public class IngredientsController {
         return ingredientsService.addIngredient(ingredient);
     }
 
-    @DeleteMapping("{id_ingredient}")
+    @DeleteMapping("/{id_ingredient}")
     public String deleteIngredient(@PathVariable int id_ingredient) {
         return ingredientsService.suppIngredient(id_ingredient);
     }
