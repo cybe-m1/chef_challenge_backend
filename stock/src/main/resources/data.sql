@@ -1,0 +1,5 @@
+INSERT INTO stock VALUES (1, 1, 1, 10);
+INSERT INTO stock VALUES (2, 1, 2, 10);
+INSERT INTO stock VALUES (3, 1, 3, 10);
+INSERT INTO stock VALUES (4, 2, 1, 10);
+INSERT INTO stock VALUES (5, 2, 4, 10);
