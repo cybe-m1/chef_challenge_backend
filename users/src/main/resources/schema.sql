@@ -5,5 +5,6 @@ CREATE TABLE IF NOT EXISTS user (
   email VARCHAR(100),
   pseudo VARCHAR(50),
   password VARCHAR(50),
-  urlPicture VARCHAR(200)
+  urlPicture VARCHAR(200),
+  CONSTRAINT UK_User UNIQUE (id_user,email)
 );

@@ -33,8 +33,8 @@ public class UserController {
         return userService.addUser(user);
     }
 
-    @DeleteMapping("{id_user}")
+    @DeleteMapping("/{id_user}")
     public String deleteUser(@PathVariable int id_user) {
-        return userService.suppUser(id_user);
+        return userService.deleteUser(id_user);
     }
 }

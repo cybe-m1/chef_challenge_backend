@@ -36,7 +36,7 @@ public class UserService {
         }
     }
 
-    public String suppUser(int id_user) {
+    public String deleteUser(int id_user) {
         if (userRepository.existsById(id_user)) {
             User userToDelete = userRepository.getById(id_user);
             userRepository.delete(userToDelete);
