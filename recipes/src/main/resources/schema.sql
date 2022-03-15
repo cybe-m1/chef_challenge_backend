@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS recipe (
+  id_recipe INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(50)
+);

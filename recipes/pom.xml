@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>chefchallenge.backend</groupId>
-    <artifactId>receipes</artifactId>
+    <artifactId>recipes</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>receipes</name>
-    <description>receipes</description>
+    <name>recipes</name>
+    <description>recipes service</description>
     <properties>
         <java.version>11</java.version>
         <repackage.classifier/>
@@ -39,6 +39,11 @@
             <groupId>org.springframework.experimental</groupId>
             <artifactId>spring-native</artifactId>
             <version>${spring-native.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
