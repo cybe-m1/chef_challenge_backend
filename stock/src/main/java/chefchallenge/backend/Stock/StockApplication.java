@@ -3,8 +3,9 @@ package chefchallenge.backend.Stock;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-@AutoConfigurationPackage
+@EnableEurekaClient
 @SpringBootApplication
 public class StockApplication {
 
