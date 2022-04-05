@@ -1,5 +1,7 @@
 package chefchallenge.backend.recipes;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +14,9 @@ public class RecipeController {
     public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @GetMapping
     public List<Recipe> getListIngredient(){
