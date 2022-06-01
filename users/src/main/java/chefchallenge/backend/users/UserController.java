@@ -34,6 +34,11 @@ public class UserController {
         return userService.addUser(user);
     }
 
+    @PostMapping("/connexion")
+    public User connexion(@RequestBody Connexion connexion){
+        return userService.postConnexionUser(connexion);
+    }
+
     @DeleteMapping("/{id_user}")
     public String deleteUser(@PathVariable int id_user) {
         return userService.deleteUser(id_user);
