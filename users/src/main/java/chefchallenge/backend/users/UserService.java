@@ -20,6 +20,16 @@ public class UserService {
         return userRepository.getById(id_user);
     }
 
+    public User postConnexionUser(Connexion user) {
+        var userWanted = userRepository.findByPseudo(user.getUsername());
+
+        if(userWanted.getPassword().equals(user.getPassword())){
+            return userWanted;
+        } else {
+            throw new IllegalArgumentException("Mauvais identifiant");
+        }
+    }
+
     public User addUser(User user) {
         if (userRepository.existsById(user.getId_user())) {
             throw new IllegalArgumentException("Id " + user.getId_user() + " already used");
