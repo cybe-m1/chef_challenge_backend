@@ -1,0 +1,23 @@
+version: 2
+
+jobs:
+  build: &shared-config
+    docker:
+      - image: circleci/openjdk:11-buster-node-browsers-legacy
+
+    steps:
+      - checkout
+      - run:
+          name: Install all dependencies
+          command: |
+              for SERVICE in admin challenges eureka gateway ingredients recipes stock users
+              do
+                echo "Installing dependencies for service ${SERVICE}"
+                cd ${SERVICE} && ./mvnw clean install && cd ..
+              done
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build

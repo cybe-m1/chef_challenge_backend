@@ -1,0 +1,106 @@
+version: '3.3'
+
+networks:
+  cc_backend_network:
+    driver: bridge
+
+services:
+  eureka-server:
+    build: eureka/
+    tty: true
+    ports:
+      - "9997:9997"
+    networks:
+      - cc_backend_network
+
+  gateway-service:
+    build: gateway/
+    tty: true
+    ports:
+      - "9998:9998"
+    environment:
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
+
+    depends_on:
+      - eureka-server
+    networks:
+      - cc_backend_network
+
+  admin-service:
+    build: admin/
+    tty: true
+    ports:
+      - "9999:9999"
+    depends_on:
+      - eureka-server
+      - gateway-service
+    environment:
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
+    networks:
+      - cc_backend_network
+
+  user-service:
+    build: users/
+    tty: true
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka-server
+      - gateway-service
+    environment:
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
+    networks:
+      - cc_backend_network
+
+  ingredient-service:
+    build: ingredients/
+    tty: true
+    ports:
+      - "8083:8083"
+    depends_on:
+      - eureka-server
+      - gateway-service
+    environment:
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
+    networks:
+      - cc_backend_network
+
+
+  challenge-service:
+    build: challenges/
+    tty: true
+    ports:
+      - "8085:8085"
+    depends_on:
+      - eureka-server
+      - gateway-service
+    environment:
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
+    networks:
+      - cc_backend_network
+
+  recipe-service:
+    build: recipes/
+    tty: true
+    ports:
+      - "8084:8084"
+    depends_on:
+      - eureka-server
+      - gateway-service
+    environment:
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
+    networks:
+      - cc_backend_network
+
+  stock-service:
+    build: stock/
+    tty: true
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka-server
+      - gateway-service
+    environment:
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
+    networks:
+      - cc_backend_network
