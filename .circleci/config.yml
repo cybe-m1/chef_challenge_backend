@@ -12,6 +12,7 @@ jobs:
           command: |
               for SERVICE in admin challenges eureka gateway ingredients recipes stock users
               do
+                echo "Installing dependencies for service ${SERVICE}"
                 cd ${SERVICE} && ./mvnw clean install && cd ..
               done
 
