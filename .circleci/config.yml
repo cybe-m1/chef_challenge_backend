@@ -1,0 +1,20 @@
+version: 2
+
+jobs:
+  build: &shared-config
+    docker:
+      - image: circleci/
+
+    steps:
+      - checkout
+      - command: |
+          for SERVICE in admin challenges eureka gateway ingredients recipes stock users
+          do
+            cd SERVICE && ./mvnw clean install && cd ..
+          done
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
