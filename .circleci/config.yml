@@ -12,7 +12,7 @@ jobs:
           command: |
               for SERVICE in admin challenges eureka gateway ingredients recipes stock users
               do
-                cd SERVICE && ./mvnw clean install && cd ..
+                cd ${SERVICE} && ./mvnw clean install && cd ..
               done
 
 workflows:
