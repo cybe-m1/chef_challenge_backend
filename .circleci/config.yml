@@ -3,7 +3,7 @@ version: 2
 jobs:
   build: &shared-config
     docker:
-      - image: circleci/
+      - image: circleci/openjdk:11-buster-node-browsers-legacy
 
     steps:
       - checkout
