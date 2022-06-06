@@ -18,6 +18,6 @@ FROM openjdk:11-jdk-oraclelinux7
 
 RUN echo "Upload of eureka service"
 
-COPY ./target/*.jar .
+COPY ./eureka/target/*.jar .
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]

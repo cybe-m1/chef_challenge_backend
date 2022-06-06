@@ -18,6 +18,6 @@ FROM openjdk:11-jdk-oraclelinux7
 
 RUN echo "Upload of users service"
 
-COPY ./target/*.jar .
+COPY ./users/target/*.jar .
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
