@@ -1,12 +1,6 @@
 build:
   docker:
-    eureka: eureka/Dockerfile
-    gateway: gateway/Dockerfile
-    admin: admin/Dockerfile
-    users: users/Dockerfile
+    application: Dockerfile
 
 run:
-  eureka: java -jar /app.jar
-  gateway: java -jar /app.jar
-  admin: java -jar /app.jar
-  users: java -jar /app.jar
+  application: sh -c "for i in eureka gateway users admin; do java -jar $i.jar &; done"
