@@ -8,4 +8,4 @@ RUN cp service/target/*.jar app.jar
 
 RUN rm -fr service
 
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+CMD ["java", "-jar", "/app.jar"]
