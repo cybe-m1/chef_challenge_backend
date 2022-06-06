@@ -1,10 +1,12 @@
 FROM openjdk:11-jdk-oraclelinux7
 
-COPY ./target ./target
+COPY . ./service
 
-# RUN ./mvnw clean install
+RUN ./mvnw clean install
 
+ARG JAR_FILE=service/target/*.jar
+COPY ${JAR_FILE} ./app.jar
 
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
+RUN rm -fr service
+
 ENTRYPOINT ["java", "-jar", "/app.jar"]
