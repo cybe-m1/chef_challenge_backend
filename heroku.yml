@@ -4,3 +4,9 @@ build:
     gateway: gateway/Dockerfile
     admin: admin/Dockerfile
     users: users/Dockerfile
+
+run:
+  eureka: java -jar /app.jar
+  gateway: java -jar /app.jar
+  admin: java -jar /app.jar
+  users: java -jar /app.jar
