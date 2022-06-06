@@ -2,10 +2,12 @@ FROM openjdk:11-jdk-oraclelinux7
 
 COPY . ./service
 
-RUN cd service && ./mvnw clean install && cd ..
+RUN cd service && ./mvnw clean install && ./mvnw package && cd ..
 
-ARG JAR_FILE=./service/target/*.jar
-COPY ${JAR_FILE} app.jar
+RUN ls service/target
+
+ARG JAR_FILE=service/target/*.jar
+COPY service/target/*.jar app.jar
 
 RUN rm -fr service
 
