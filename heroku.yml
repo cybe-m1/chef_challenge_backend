@@ -3,4 +3,4 @@ build:
     application: ./Dockerfile
 
 run:
-  application: sh -c "for i in eureka gateway users admin; do java -jar $i.jar &; done"
+  application: sh -c "for i in eureka gateway users admin; do java -jar app/$i.jar &; done"
