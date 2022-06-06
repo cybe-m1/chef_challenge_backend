@@ -16,7 +16,7 @@
 
 FROM openjdk:11-jdk-oraclelinux7
 
-COPY target ./target
+COPY ./target .
 
 RUN ls
 
