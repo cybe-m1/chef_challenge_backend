@@ -12,6 +12,7 @@ services:
       - "9997:9997"
     networks:
       - cc_backend_network
+    container_name: eureka-server
 
   gateway-service:
     build: gateway/
@@ -20,11 +21,11 @@ services:
       - "9998:9998"
     environment:
       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
-
     depends_on:
       - eureka-server
     networks:
       - cc_backend_network
+    container_name: gateway-service
 
   admin-service:
     build: admin/
@@ -38,6 +39,7 @@ services:
       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
     networks:
       - cc_backend_network
+    container_name: admin-service
 
   user-service:
     build: users/
@@ -51,6 +53,7 @@ services:
       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
     networks:
       - cc_backend_network
+    container_name: user-service
 
   ingredient-service:
     build: ingredients/
@@ -64,6 +67,7 @@ services:
       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
     networks:
       - cc_backend_network
+    container_name: ingredients-service
 
 
   challenge-service:
@@ -78,6 +82,7 @@ services:
       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
     networks:
       - cc_backend_network
+    container_name: challenge-service
 
   recipe-service:
     build: recipes/
@@ -91,6 +96,7 @@ services:
       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
     networks:
       - cc_backend_network
+    container_name: recipe-service
 
   stock-service:
     build: stock/
@@ -104,3 +110,4 @@ services:
       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:9997/eureka"}}}}'
     networks:
       - cc_backend_network
+    container_name: stock-service
