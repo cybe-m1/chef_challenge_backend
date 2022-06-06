@@ -16,10 +16,10 @@
 
 FROM openjdk:11-jdk-oraclelinux7
 
-COPY target ./target
+COPY . ./service
 
-RUN ls
+RUN cd service && ./mvn clean install && cd ..
 
-COPY target/*.jar app.jar
+RUN cp service/target/*.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
