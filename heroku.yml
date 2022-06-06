@@ -1,6 +1,6 @@
 build:
   docker:
-    gateway: gateway/dockerfile
-    eureka: eureka/dockerfile
-    admin: admin/dockerfile
-    users: users/dockerfile
+    gateway: gateway/Dockerfile
+    eureka: eureka/Dockerfile
+    admin: admin/Dockerfile
+    users: users/Dockerfile
