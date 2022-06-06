@@ -4,8 +4,8 @@ COPY . ./service
 
 RUN cd service && ./mvnw clean install && cd ..
 
-ARG JAR_FILE=service/target/*.jar
-COPY ${JAR_FILE} ./app.jar
+ARG JAR_FILE=./service/target/*.jar
+COPY ${JAR_FILE} app.jar
 
 RUN rm -fr service
 
