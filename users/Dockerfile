@@ -1,9 +1,10 @@
 FROM openjdk:11-jdk-oraclelinux7
 
+RUN echo "\n\nUpload of users service\n\n"
+
 COPY . ./service
 
-RUN cd service && ./mvnw clean install && ./mvnw package && cd ..
-
+RUN cd service && ./mvnw clean install && cd ..
 RUN ls service/target
 
 ARG JAR_FILE=service/target/*.jar
