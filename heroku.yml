@@ -1,0 +1,10 @@
+build:
+  docker:
+    application: ./Dockerfile
+
+run:
+  application: |
+    for i in eureka gateway users admin
+    do
+      java -jar app/$i.jar &
+    done
