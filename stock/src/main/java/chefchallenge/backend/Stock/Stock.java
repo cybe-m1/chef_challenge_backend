@@ -1,9 +1,6 @@
 package chefchallenge.backend.Stock;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +12,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Data
 public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

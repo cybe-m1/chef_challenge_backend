@@ -1,4 +1,7 @@
 CREATE TABLE IF NOT EXISTS recipe (
   id_recipe INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(50)
+  id_user INT,
+  name VARCHAR(50),
+  description VARCHAR(200),
+  ingredients VARCHAR(200)
 );
