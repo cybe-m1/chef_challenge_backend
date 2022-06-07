@@ -59,7 +59,14 @@ public class StockController {
     }
 
     @PostMapping
-    public Stock addStock(@RequestBody Stock stock) {
+    public Stock addStock(@RequestBody PDOStockAdd PDOStockAdd) {
+        String url = ingredient_url + "/search/" + PDOStockAdd.getName();
+        IngredientDTO response = restTemplate.getForObject(url, IngredientDTO.class);
+
+        Stock stock = new Stock();
+        stock.setId_user(PDOStockAdd.getId_user());
+        stock.setQuantity(PDOStockAdd.getQuantity());
+        stock.setId_ingredient(response.getId_ingredient());
         return stockService.addStock(stock);
     }
 
