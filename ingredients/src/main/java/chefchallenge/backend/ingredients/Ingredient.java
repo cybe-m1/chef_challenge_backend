@@ -20,4 +20,5 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_ingredient;
     private String name;
+    private String url;
 }
