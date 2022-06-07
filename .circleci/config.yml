@@ -51,4 +51,6 @@ workflows:
       - build
       - docker-build-and-push:
           requires:
-          - build
+            - build
+          only:
+            - master
