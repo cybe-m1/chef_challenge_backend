@@ -18,6 +18,8 @@ ___
 
 ## Services
 
+**Chef Challenge Services**
+
 ### [🏆 Challenges](challenges)
 
 ### [📙 Receipes](receipes)
@@ -26,9 +28,15 @@ ___
 
 ### [👥 Users](users)
 
-### [👮 Admin](admin)
+### [🍱 Stock](stock)
 
-### [📚 Files](files)
+**API services**
+
+### [🔎 Eureka](eureka)
+
+### [🚪 Gateway](gateway)
+
+### [👮 Admin](admin)
 
 ## Getting Started
 

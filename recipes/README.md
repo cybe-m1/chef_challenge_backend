@@ -15,19 +15,19 @@ _Recipes service of the Chef Challenge project._
 
 ### The route for recipes service
 
-Get a list of recipes :  
+Get a list of all recipes :  
 method : **[GET]**  
 url : `localhost:8084/api/recipe`
 
-Get a list of recipes based on the name who look like :  
+Get a list a recipe from name :  
 method : **[GET]**  
 url : `localhost:8084/api/recipe/search/{nameOfRecipe}`
 
-Get one recipes by id :  
+Get recipe by ID :  
 method : **[GET]**  
 url : `localhost:8084/api/recipe/{idrecipe}`
 
-Modify one recipes  
+Update a recipe  
 method : **[PUT]**   
 url : `localhost:8084/api/recipe`  
 Body :
@@ -38,18 +38,16 @@ Body :
 }
 ```
 
-For add a recipes :  
+Add a new recipe :  
 method : **[POST]**  
 url : `localhost:8084/api/recipe`  
-Body:
-> No need to put an id
-
+Body:  
 ```json
 {
   "name": "name of your recipe"
 }
 ```
 
-For erase a recipes :  
+Erase a recipe :  
 method : **[DELETE]**  
 url : `localhost:8084/api/recipe/{idRecipe}`  
