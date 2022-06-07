@@ -19,5 +19,9 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_recipe;
+    private int id_user;
     private String name;
+    private String description;
+    private String ingredients;
+    private String url;
 }

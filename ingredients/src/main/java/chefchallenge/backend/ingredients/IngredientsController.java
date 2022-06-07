@@ -3,6 +3,7 @@ package chefchallenge.backend.ingredients;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
@@ -25,7 +26,7 @@ public class IngredientsController {
     }
 
     @GetMapping("/search/{name_ingredient}")
-    public List<Ingredient> getIngredientByName(@PathVariable String name_ingredient){
+    public Optional<Ingredient> getIngredientByName(@PathVariable String name_ingredient){
         return ingredientsService.getIngredientByName(name_ingredient);
     }
 

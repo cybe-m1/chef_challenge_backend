@@ -3,6 +3,7 @@ package chefchallenge.backend.ingredients;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class IngredientsService {
@@ -20,8 +21,8 @@ public class IngredientsService {
         return ingredientsRepository.getById(id_user);
     }
 
-    public List<Ingredient> getIngredientByName(String name_Ingredient) {
-        return ingredientsRepository.findByNameContaining(name_Ingredient);
+    public Optional<Ingredient> getIngredientByName(String name_Ingredient) {
+        return ingredientsRepository.findByNameContaining(name_Ingredient).stream().findFirst();
     }
 
     public Ingredient addIngredient(Ingredient ingredient) {
