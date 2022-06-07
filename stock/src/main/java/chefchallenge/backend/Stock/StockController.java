@@ -1,7 +1,14 @@
 package chefchallenge.backend.Stock;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
@@ -14,6 +21,10 @@ public class StockController {
         this.stockService = stockService;
     }
 
+    @Autowired
+    private RestTemplate restTemplate;
+    private String ingredient_url="http://localhost:8083/ingredient/";
+
     @GetMapping
     public List<Stock> getAllStock(){
         return stockService.getAllStock();
@@ -25,8 +36,21 @@ public class StockController {
     }
 
     @GetMapping("user/{id_user}")
-    public List<Stock> getStockByIdUser(@PathVariable int id_user){
-        return stockService.getStockByUser(id_user);
+    public List<PDOStock> getStockByIdUser(@PathVariable int id_user) throws JsonProcessingException {
+        List<Stock> stockOfAllIngredient = stockService.getStockByUser(id_user);
+        List<PDOStock> finalList = new ArrayList<PDOStock>();
+
+        for (int i = 0; i < stockOfAllIngredient.size(); i++) {
+            String url = ingredient_url + stockOfAllIngredient.get(i).getId_ingredient();
+            IngredientDTO response = restTemplate.getForObject(url, IngredientDTO.class);
+            PDOStock stockToAdd = new PDOStock();
+            stockToAdd.setName(response.getName());
+            stockToAdd.setUrl(response.getUrl());
+            stockToAdd.setQuantity(stockOfAllIngredient.get(i).getQuantity());
+
+            finalList.add(stockToAdd);
+        }
+        return finalList;
     }
 
     @PutMapping
@@ -35,7 +59,14 @@ public class StockController {
     }
 
     @PostMapping
-    public Stock addStock(@RequestBody Stock stock) {
+    public Stock addStock(@RequestBody PDOStockAdd PDOStockAdd) {
+        String url = ingredient_url + "/search/" + PDOStockAdd.getName();
+        IngredientDTO response = restTemplate.getForObject(url, IngredientDTO.class);
+
+        Stock stock = new Stock();
+        stock.setId_user(PDOStockAdd.getId_user());
+        stock.setQuantity(PDOStockAdd.getQuantity());
+        stock.setId_ingredient(response.getId_ingredient());
         return stockService.addStock(stock);
     }
 
