@@ -49,3 +49,6 @@ workflows:
   build:
     jobs:
       - build
+      - docker-build-and-push:
+          requires:
+          - build
