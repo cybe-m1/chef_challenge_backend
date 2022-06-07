@@ -23,7 +23,7 @@ public class StockController {
 
     @Autowired
     private RestTemplate restTemplate;
-    private String ingredient_url="http://localhost:8083/ingredient/";
+    private String ingredient_url="http://localhost:9998/ingredient/";
 
     @GetMapping
     public List<Stock> getAllStock(){
@@ -66,7 +66,17 @@ public class StockController {
         Stock stock = new Stock();
         stock.setId_user(PDOStockAdd.getId_user());
         stock.setQuantity(PDOStockAdd.getQuantity());
-        stock.setId_ingredient(response.getId_ingredient());
+
+        if(response == null){
+            IngredientDTO toSend = new IngredientDTO();
+            toSend.setName(PDOStockAdd.getName());
+            toSend.setUrl(PDOStockAdd.getUrl());
+            IngredientDTO creationIngredient = restTemplate.postForObject("http://localhost:9998/ingredient", toSend, IngredientDTO.class);
+            stock.setId_ingredient(creationIngredient.getId_ingredient());
+        } else {
+            stock.setId_ingredient(response.getId_ingredient());
+        }
+
         return stockService.addStock(stock);
     }
 
