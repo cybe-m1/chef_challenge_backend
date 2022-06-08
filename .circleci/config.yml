@@ -16,7 +16,7 @@ jobs:
                 cd ${SERVICE} && ./mvnw clean install && ./mvnw package && cd ..
               done
 
-  docker-build-and-push:
+  docker-build:
     docker:
       - image: circleci/openjdk:11-buster-node-browsers-legacy
     steps:
@@ -34,14 +34,22 @@ jobs:
       - run:
           name: Build application Docker image
           command: docker-compose build
+
+  docker-push:
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
       - deploy:
           name: Publish application to docker hub
           command: |
             docker login -e $PROD_EMAIL -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
             docker tag app $DOCKERHUB_USERNAME/$DOCKERHUB_APP_NAME:$CIRCLE_BUILD_NUM
             docker tag app $DOCKERHUB_USERNAME/$DOCKERHUB_APP_NAME:latest
-            docker-compose push $DOCKERHUB_USERNAME/$DOCKERHUB_APP_NAME:$CIRCLE_BUILD_NUM
-            docker-compose push $DOCKERHUB_USERNAME/$DOCKERHUB_APP_NAME:latest
+            docker push $DOCKERHUB_USERNAME/$DOCKERHUB_APP_NAME:$CIRCLE_BUILD_NUM
+            docker push $DOCKERHUB_USERNAME/$DOCKERHUB_APP_NAME:latest
 
 
 workflows:
@@ -49,9 +57,15 @@ workflows:
   continuous_integration:
     jobs:
       - build
-      - docker-build-and-push:
+      - docker-build:
           requires:
             - build
+          filters:
+            branches:
+              only: master
+      - docker-push:
+          requires:
+            - docker-build
           filters:
             branches:
               only: master
