@@ -52,6 +52,8 @@ Start by cloning the project on your local machine.
 
 ### Run the project
 
+**Using Intellij**
+
 If you are using IntelliJ, you can run each service from the `run` button.
 
 If you are using your CLI, first place yourself in the project directory service.
@@ -70,6 +72,18 @@ If you are using Docker, in the project directory, you can run the following com
 
 ```bash
 ❯ sudo docker-compose up -d
+```
+
+**Using the start script**
+
+The project contains a script that starts all services and install all dependencies.
+
+> WARNING ! The script must be ran on a Linux environment !
+
+In order to user the script, place yourself in the project directory and run the following command :
+
+```bash
+./start_api.sh
 ```
 
 > The API is first going to map all the services together, this step takes a few seconds so the all the services might not be available right away.
