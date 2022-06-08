@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build: &shared-config
+  build:
     docker:
       - image: circleci/openjdk:11-buster-node-browsers-legacy
 
@@ -13,7 +13,7 @@ jobs:
               for SERVICE in admin challenges eureka gateway ingredients recipes stock users
               do
                 echo "Installing dependencies for service ${SERVICE}"
-                cd ${SERVICE} && ./mvnw clean install && cd ..
+                cd ${SERVICE} && ./mvnw clean install && ./mvnw package && cd ..
               done
 
   docker-build-and-push:
@@ -46,11 +46,12 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  continuous_integration:
     jobs:
       - build
       - docker-build-and-push:
           requires:
             - build
-          only:
-            - master
+          filters:
+            branches:
+              only: master
