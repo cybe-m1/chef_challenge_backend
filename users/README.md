@@ -22,11 +22,11 @@ Get a list of user :
 method : **[GET]**  
 url : `localhost:8081/api/user`  
 
-Get a list of ingredient based on the name who look like :  
-method : **[GET]**  
+Get single user informations :  
+**[GET]**  
 url : `localhost:8081/api/user/{idUser}`  
 
-Modify one user   
+Update one user   
 method : **[PUT]**   
 url : `localhost:8081/api/user`  
 Body :  
@@ -42,7 +42,7 @@ Body :
 }
 ```
 
-For add a user :  
+To create an user :  
 method : **[POST]**  
 url : `localhost:8081/api/user`  
 Body:  
@@ -58,6 +58,6 @@ Body:
 }
 ```
 
-For erase a user :  
+To delete an user :  
 method : **[DELETE]**  
 url : `localhost:8081/api/user/{idUser}`  
