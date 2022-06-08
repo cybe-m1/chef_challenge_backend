@@ -10,6 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PDOStock {
+    private int id_stock;
+    private int id_user;
+    private int id_ingredient;
     private String name;
     private int quantity;
     private String url;

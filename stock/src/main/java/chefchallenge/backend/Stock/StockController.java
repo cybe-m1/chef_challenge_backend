@@ -44,6 +44,9 @@ public class StockController {
             String url = ingredient_url + stockOfAllIngredient.get(i).getId_ingredient();
             IngredientDTO response = restTemplate.getForObject(url, IngredientDTO.class);
             PDOStock stockToAdd = new PDOStock();
+            stockToAdd.setId_stock(stockOfAllIngredient.get(i).getId_stock());
+            stockToAdd.setId_user(id_user);
+            stockToAdd.setId_ingredient(response.getId_ingredient());
             stockToAdd.setName(response.getName());
             stockToAdd.setUrl(response.getUrl());
             stockToAdd.setQuantity(stockOfAllIngredient.get(i).getQuantity());
@@ -53,9 +56,31 @@ public class StockController {
         return finalList;
     }
 
+    @GetMapping("particularStock/{id_stock}")
+    public PDOStock getStockByIdStock(@PathVariable int id_stock) throws JsonProcessingException {
+        Stock stock = stockService.getStock(id_stock);
+        PDOStock pdoStock = new PDOStock();
+
+        String url = ingredient_url + stock.getId_ingredient();
+        IngredientDTO response = restTemplate.getForObject(url, IngredientDTO.class);
+        pdoStock.setId_stock(stock.getId_stock());
+        pdoStock.setId_ingredient(stock.getId_ingredient());
+        pdoStock.setId_user(stock.getId_user());
+        pdoStock.setName(response.getName());
+        pdoStock.setUrl(response.getUrl());
+        pdoStock.setQuantity(stock.getQuantity());
+
+        return pdoStock;
+    }
+
     @PutMapping
-    public Stock modifyStock(@RequestBody Stock stock) {
-        return stockService.modifyStock(stock);
+    public Stock modifyStock(@RequestBody PDOStock pdoStock) {
+        Stock stockPut = new Stock();
+        stockPut.setId_stock(pdoStock.getId_stock());
+        stockPut.setId_ingredient(pdoStock.getId_ingredient());
+        stockPut.setId_user(pdoStock.getId_user());
+        stockPut.setQuantity(pdoStock.getQuantity());
+        return stockService.modifyStock(stockPut);
     }
 
     @PostMapping
