@@ -34,14 +34,6 @@ jobs:
       - run:
           name: Build application Docker image
           command: docker-compose build
-
-  docker-push:
-    docker:
-      - image: docker:17.05.0-ce-git
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 19.03.13
       - deploy:
           name: Publish application to docker hub
           command: |
@@ -57,12 +49,6 @@ workflows:
       - docker-build:
           requires:
             - build
-          filters:
-            branches:
-              only: master
-      - docker-push:
-          requires:
-            - docker-build
           filters:
             branches:
               only: master
