@@ -13,6 +13,7 @@ services:
     networks:
       - cc_backend_network
     container_name: eureka-server
+    image: adechauveron/chefchallenge-eureka
 
   gateway-service:
     build: gateway/
@@ -26,6 +27,7 @@ services:
     networks:
       - cc_backend_network
     container_name: gateway-service
+    image: adechauveron/chefchallenge-gateway
 
   admin-service:
     build: admin/
@@ -40,6 +42,7 @@ services:
     networks:
       - cc_backend_network
     container_name: admin-service
+    image: adechauveron/chefchallenge-admin
 
   user-service:
     build: users/
@@ -54,6 +57,7 @@ services:
     networks:
       - cc_backend_network
     container_name: user-service
+    image: adechauveron/chefchallenge-user
 
   ingredient-service:
     build: ingredients/
@@ -68,6 +72,7 @@ services:
     networks:
       - cc_backend_network
     container_name: ingredients-service
+    image: adechauveron/chefchallenge-ingredient
 
 
   challenge-service:
@@ -83,6 +88,7 @@ services:
     networks:
       - cc_backend_network
     container_name: challenge-service
+    image: adechauveron/chefchallenge-challenge
 
   recipe-service:
     build: recipes/
@@ -97,6 +103,7 @@ services:
     networks:
       - cc_backend_network
     container_name: recipe-service
+    image: adechauveron/chefchallenge-recipe
 
   stock-service:
     build: stock/
@@ -111,3 +118,4 @@ services:
     networks:
       - cc_backend_network
     container_name: stock-service
+    image: adechauveron/chefchallenge-stock
