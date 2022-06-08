@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build:
+  build: &shared-config
     docker:
       - image: circleci/openjdk:11-buster-node-browsers-legacy
 
@@ -18,19 +18,19 @@ jobs:
 
   docker-build-and-push:
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: circleci/openjdk:11-buster-node-browsers-legacy
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
       - run:
           name: Install Docker Compose
           environment:
-            COMPOSE_VERSION: 1.29.2
+            COMPOSE_VERSION: '1.29.2'
           command: |
             curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o ~/docker-compose
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - setup_remote_docker:
+          version: 19.03.13
       - run:
           name: Build application Docker image
           command: docker-compose build
