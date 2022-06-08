@@ -26,7 +26,15 @@ public class StockService {
     }
 
     public Stock getStock(int id_stock) {
-        return stockRepostiory.getById(id_stock);
+        List<Stock> listStock = stockRepostiory.findAll();
+        Stock stockToReturn = new Stock();
+        for (int i = 0; i < listStock.size() ; i++) {
+            if(listStock.get(i).getId_stock() == id_stock) {
+                stockToReturn = listStock.get(i);
+                break;
+            }
+        }
+        return stockToReturn;
     }
 
     public Stock addStock(Stock newStock) {
@@ -54,5 +62,4 @@ public class StockService {
             return"Id: " + idtruck + " dosen't exist";
         }
     }
-
 }

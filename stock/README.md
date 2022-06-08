@@ -56,6 +56,10 @@ Body:
 }
 ```
 
+Route formated stock :  
+method : **[GET]**  
+url: `localhost:8082/stock/particularStock/{idStock}`
+
 For erase a ingredient :  
 method : **[DELETE]**  
 url : `localhost:8082/api/stock/{idStock}`  
