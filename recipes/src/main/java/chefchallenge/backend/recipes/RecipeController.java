@@ -20,12 +20,12 @@ public class RecipeController {
     private DiscoveryClient discoveryClient;
 
     @GetMapping
-    public List<Recipe> getListIngredient(){
+    public List<Recipe> getListRecipe(){
         return recipeService.getAllRecipe();
     }
 
     @GetMapping("/{id_recipe}")
-    public Recipe getIngredientById(@PathVariable int id_recipe){
+    public Recipe getRecipeById(@PathVariable int id_recipe){
         return recipeService.getRecipe(id_recipe);
     }
 
@@ -35,12 +35,12 @@ public class RecipeController {
     }
 
     @PutMapping
-    public Recipe modifyIngredient(@RequestBody Recipe recipe) {
+    public Recipe modifyRecipe(@RequestBody Recipe recipe) {
         return recipeService.modifyRecipe(recipe);
     }
 
     @PostMapping
-    public Recipe addIngredient(@RequestBody Recipe recipe) {
+    public Recipe addRecipe(@RequestBody Recipe recipe) {
         return recipeService.addRecipe(recipe);
     }
 

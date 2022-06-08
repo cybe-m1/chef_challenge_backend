@@ -1,0 +1,664 @@
+{
+	"info": {
+		"_postman_id": "78dcd1b0-3ee7-4d18-9964-353c2438888e",
+		"name": "chef_challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10063897"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"user",
+								""
+							]
+						},
+						"description": "Fetch all the users in the database."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Brice\",\n    \"last_name\": \"Boucher\",\n    \"email\": \"brice.boucher@yahoo.fr\",\n    \"pseudo\": \"TheRealBriceBoucher\",\n    \"password\": \"/Br1c3B0uch3r/\",\n    \"urlPicture\": \"https://st2.depositphotos.com/1258191/5182/i/600/depositphotos_51829509-stock-photo-aggressive-adventurer-exploring-jungle.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9998/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single user informations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/user/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"user",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_user\": 5,\n    \"first_name\": \"Brice\",\n    \"last_name\": \"Boucher\",\n    \"email\": \"brice.boucher@yahoo.fr\",\n    \"pseudo\": \"TheRealBriceBoucher\",\n    \"password\": \"1234\",\n    \"urlPicture\": \"https://st2.depositphotos.com/1258191/5182/i/600/depositphotos_51829509-stock-photo-aggressive-adventurer-exploring-jungle.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9998/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Connect user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"TheRealBriceBoucher\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9998/user/connexion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"user",
+								"connexion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/user/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"user",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ingredients",
+			"item": [
+				{
+					"name": "Get all ingredients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/ingredient",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"ingredient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ingredient by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/ingredient/search/Tomate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"ingredient",
+								"search",
+								"Tomate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ingredient by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/ingredient/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"ingredient",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update ingredients",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_ingredient\": 1,\n    \"name\": \"Steak\",\n    \"url\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUp6g0UdhBaJbA-qNpboK12Xc1Krn4W0mCJQ&usqp=CAU\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9998/ingredient",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"ingredient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new ingredient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sel\",\n    \"url\": \"https://img.gaming.gentside.com/article/1280/league-of-legends/league-of-legends-sardoche-est-pret-a-mourir-pour-que-vous-arretiez-de-jouer-a-lol_e9e12c5e1fa2041f05498918c7fa92578e431138.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9998/ingredient",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"ingredient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove ingredient",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/ingredient/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"ingredient",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "recipes",
+			"item": [
+				{
+					"name": "Get all recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/recipe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"recipe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get recipe by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/recipe/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"recipe",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get recipe by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/recipe/search/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"recipe",
+								"search",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create recipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Brochette d'abats\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9998/recipe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"recipe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update recipe",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_recipe\": 1,\n    \"name\": \"Steak tartare\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9998/recipe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"recipe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete recipe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/recipe/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"recipe",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "challenges",
+			"item": [
+				{
+					"name": "Get all challenges",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/challenge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"challenge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get challenge by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/challenge/search/Chamallow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"challenge",
+								"search",
+								"Chamallow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new challenge",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Pomme grillée au Chamallow\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9998/challenge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"challenge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update challenge",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_challenge\": 1,\n    \"name\": \"Fire Party\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9998/challenge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"challenge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Challenge",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/challenge/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"challenge",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stock",
+			"item": [
+				{
+					"name": "Get all stocks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/stock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"stock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add ingredient to stock",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_user\": 1,\n    \"id_ingredient\": 1,\n    \"quantity\": 1\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9998/stock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"stock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update ingredient",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_stock\": 2,\n    \"id_user\": 1,\n    \"id_ingredient\": 1,\n    \"quantity\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9998/stock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"stock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ingredients in stock",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9998/stock/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9998",
+							"path": [
+								"stock",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
